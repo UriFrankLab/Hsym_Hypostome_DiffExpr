@@ -5,4 +5,4 @@ Scripts for analysis from aligned reads to analysis of enrichment for KEGG terms
 Using:
 
 Subread - featureCounts
-DESeq2
+// DESeq2
