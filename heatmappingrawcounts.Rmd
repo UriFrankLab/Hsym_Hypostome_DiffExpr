@@ -1,0 +1,49 @@
+---
+title: "AllHeatMap"
+author: "Helen Horkan"
+date: '2022-03-03'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+BiocManager::install("Rsubread")
+library('Rsubread')
+BiocManager::install("DESeq2")
+library('DESeq2') 
+install.packages("tidyverse")
+library('tidyverse')
+install.packages("pheatmap")
+library('pheatmap')
+
+##read in counts from featureCounts
+total_counts <- read.csv("total_counts.csv")
+total_counts <- as.matrix(total_counts)
+
+
+heatmap(total_counts, Rowv=NA, Colv=NA, col = cm.colors(256), scale="column", margins=c(5,10))
+
+pheatmap(total_counts)
+
+##heatmap
+select <- order(rowMeans(counts(dds,normalized=TRUE)), decreasing=TRUE)[1:50]
+select
+df <- as.data.frame(colData(dds)[,c("condition")])
+df
+pheatmap(assay(rld)[select,], cluster_rows=FALSE, show_rownames=TRUE, cluster_cols=FALSE)
+geneheatmap
+
+png("heatmap_rawcounts.png", w=1000, h=1000, pointsize=20)
+pheatmap(assay(rld)[select,], cluster_rows=FALSE, show_rownames=TRUE, cluster_cols=FALSE)
+dev.off()
+
+
+
+
+
+
+```
+

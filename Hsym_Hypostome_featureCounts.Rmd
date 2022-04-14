@@ -1,0 +1,53 @@
+---
+title: "MS2Hypos"
+author: "Helen Horkan"
+date: "16/02/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("Rsubread")
+library('Rsubread')
+BiocManager::install("DESeq2")
+library('DESeq2')
+
+#Run feature counts for each sample, including multimappers with fractionation
+
+
+Counts0_1 <- featureCounts(files=c("./BAMS/Hd0_1.bam"),isPairedEnd=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,annot.ext="./BAMS/Omes/FinalGenome/Hsym_primary_v1.0.gtf",isGTFAnnotationFile=TRUE,nthread=8)$counts
+write.csv(Counts0_1, file = "Counts0_1.csv", col.names = TRUE, row.names = TRUE)
+Counts0_2 <- featureCounts(files=c("./BAMS/Hd0_2.bam"),isPairedEnd=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,annot.ext="./BAMS/Omes/FinalGenome/Hsym_primary_v1.0.gtf",isGTFAnnotationFile=TRUE,nthread=8)$counts
+write.csv(Counts0_2, file = "Counts0_2.csv", col.names = TRUE, row.names = TRUE)
+Counts0_3 <- featureCounts(files=c("./BAMS/Hd0_3.bam"),isPairedEnd=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,annot.ext="./BAMS/Omes/FinalGenome/Hsym_primary_v1.0.gtf",isGTFAnnotationFile=TRUE,nthread=8)$counts
+write.csv(Counts0_3, file = "Counts0_3.csv", col.names = TRUE, row.names = TRUE)
+Counts1_1 <- featureCounts(files=c("./BAMS/Hd1_1.bam"),isPairedEnd=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,annot.ext="./BAMS/Omes/FinalGenome/Hsym_primary_v1.0.gtf",isGTFAnnotationFile=TRUE,nthread=8)$counts
+write.csv(Counts1_1, file = "Counts1_1.csv", col.names = TRUE, row.names = TRUE)
+Counts1_2 <- featureCounts(files=c("./BAMS/Hd1_2.bam"),isPairedEnd=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,annot.ext="./BAMS/Omes/FinalGenome/Hsym_primary_v1.0.gtf",isGTFAnnotationFile=TRUE,nthread=8)$counts
+write.csv(Counts1_2, file = "Counts1_2.csv", col.names = TRUE, row.names = TRUE)
+Counts1_3 <- featureCounts(files=c("./BAMS/Hd1_3.bam"),isPairedEnd=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,annot.ext="./BAMS/Omes/FinalGenome/Hsym_primary_v1.0.gtf",isGTFAnnotationFile=TRUE,nthread=8)$counts
+write.csv(Counts1_3, file = "Counts1_3.csv", col.names = TRUE, row.names = TRUE)
+Counts3_1 <- featureCounts(files=c("./BAMS/Hd3_1.bam"),isPairedEnd=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,annot.ext="./BAMS/Omes/FinalGenome/Hsym_primary_v1.0.gtf",isGTFAnnotationFile=TRUE,nthread=8)$counts
+write.csv(Counts3_1, file = "Counts3_1.csv", col.names = TRUE, row.names = TRUE)
+Counts3_2 <- featureCounts(files=c("./BAMS/Hd3_2.bam"),isPairedEnd=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,annot.ext="./BAMS/Omes/FinalGenome/Hsym_primary_v1.0.gtf",isGTFAnnotationFile=TRUE,nthread=8)$counts
+write.csv(Counts3_2, file = "Counts3_2.csv", col.names = TRUE, row.names = TRUE)
+Counts3_3 <- featureCounts(files=c("./BAMS/Hd3_3.bam"),isPairedEnd=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,annot.ext="./BAMS/Omes/FinalGenome/Hsym_primary_v1.0.gtf",isGTFAnnotationFile=TRUE,nthread=8)$counts
+write.csv(Counts3_3, file = "Counts3_3.csv", col.names = TRUE, row.names = TRUE)
+Counts6_1 <- featureCounts(files=c("./BAMS/Hd6_1.bam"),isPairedEnd=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,annot.ext="./BAMS/Omes/FinalGenome/Hsym_primary_v1.0.gtf",isGTFAnnotationFile=TRUE,nthread=8)$counts
+write.csv(Counts6_1, file = "Counts6_1.csv", col.names = TRUE, row.names = TRUE)
+Counts6_2 <- featureCounts(files=c("./BAMS/Hd6_2.bam"),isPairedEnd=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,annot.ext="./BAMS/Omes/FinalGenome/Hsym_primary_v1.0.gtf",isGTFAnnotationFile=TRUE,nthread=8)$counts
+write.csv(Counts6_2, file = "Counts6_2.csv", col.names = TRUE, row.names = TRUE)
+
+
+##combine counts files to 'total_counts.csv'
+
+
+  ```
+
